@@ -7,8 +7,10 @@ export default function Search() {
   const foodCtx = useContext(FoodContext);
   const searchRef = useRef();
 
-  const getFoodData = async () => {
+  const getFoodData = async (e) => {
+    e.preventDefault();
     const searchValue = searchRef.current.value.trim();
+    foodCtx.setSearchLoading(true);
     await catchAsync(async () => {
       if (!searchValue) throw new Error("No input provided");
       const data = await fetchRecipeData(searchValue);
@@ -17,8 +19,9 @@ export default function Search() {
         data: [...data.data.recipes],
       });
     });
+    foodCtx.setSearchLoading(false);
   };
-  console.log(foodCtx);
+
   return (
     <InputGroup
       size="lg"
@@ -28,6 +31,8 @@ export default function Search() {
       borderRadius="2xl"
       overflow="hidden"
       _focusWithin={{ transform: "translateY(-0.3rem)", boxShadow: "xl" }}
+      as="form"
+      onSubmit={getFoodData}
     >
       <Input
         bg="gray.50"
@@ -51,7 +56,7 @@ export default function Search() {
           bgGradient: "linear(to-br, brand.100,brand.300)",
           transform: "scale(1.05)",
         }}
-        onClick={getFoodData}
+        type="submit"
       >
         Search
       </InputRightAddon>

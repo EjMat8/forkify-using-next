@@ -22,7 +22,7 @@ export default function Layout({ children }) {
         boxShadow="xl"
       >
         <Topbar />
-        <Gi bg="white" color="brand.text">
+        <Gi bg="white" color="brand.text" px={2} pos="relative">
           <FoodResultList />
         </Gi>
         <Gi bg="gray.light">{children}</Gi>

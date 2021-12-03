@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 
-import { VStack, Spacer } from "@chakra-ui/react";
+import { VStack, Spinner } from "@chakra-ui/react";
 import FoodResultItem from "./FoodResultItem";
 import FoodContext from "../../store/food-context";
+import FoodPagination from "./FoodPagination";
+
 export default function FoodResultList() {
   const foodCtx = useContext(FoodContext);
   const foodSearchPage = foodCtx.search.recipes.slice(
@@ -10,19 +12,25 @@ export default function FoodResultList() {
     foodCtx.search.resPerPage * foodCtx.search.page
   );
   return (
-    <VStack pt={8} spacing={6}>
-      {foodCtx.search.recipes.length &&
-        foodSearchPage.map((el) => (
-          <FoodResultItem
-            key={el.id}
-            id={el.id}
-            publisher={el.publisher}
-            imageUrl={el.image_url}
-            title={el.title}
-          />
-        ))}
-      <Spacer />
-    </VStack>
+    <Fragment>
+      <VStack pt={8} spacing={1}>
+        {foodCtx.search.searchLoading && (
+          <Spinner color="brand.200" size="xl" speed="0.8s" my={8} />
+        )}
+        {foodCtx.search.recipes.length &&
+          !foodCtx.search.searchLoading &&
+          foodSearchPage.map((el) => (
+            <FoodResultItem
+              key={el.id}
+              id={el.id}
+              publisher={el.publisher}
+              imageUrl={el.image_url}
+              title={el.title}
+            />
+          ))}
+      </VStack>
+      <FoodPagination />
+    </Fragment>
   );
 }
 
