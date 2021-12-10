@@ -3,7 +3,7 @@ import FoodContext from "../../store/food-context";
 import { GridItem as Gi, HStack, Image, useDisclosure } from "@chakra-ui/react";
 import Search from "./Search";
 import ActionBar from "./ActionBar";
-
+import Link from "next/link";
 import Bookmarks from "./Bookmarks";
 import AddRecipeForm from "./AddRecipeForm";
 
@@ -27,7 +27,9 @@ export default function Topbar() {
         textTransform="uppercase"
         pos="relative"
       >
-        <Image src="/logo.png" alt="logo" h="2.7rem" />
+        <Link href="/" passHref>
+          <Image src="/logo.png" alt="logo" h="2.7rem" cursor="pointer" />
+        </Link>
 
         <Search />
         <HStack spacing={0} h="100%">
