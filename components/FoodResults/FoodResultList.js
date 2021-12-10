@@ -1,6 +1,7 @@
 import { useContext, Fragment } from "react";
 
-import { VStack, Spinner } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
+import Spinner from "../UI/Spinner";
 import FoodResultItem from "./FoodResultItem";
 import FoodContext from "../../store/food-context";
 import FoodPagination from "./FoodPagination";
@@ -14,9 +15,7 @@ export default function FoodResultList() {
   return (
     <Fragment>
       <VStack pt={8} spacing={1}>
-        {foodCtx.search.searchLoading && (
-          <Spinner color="brand.200" size="xl" speed="0.8s" my={8} />
-        )}
+        {foodCtx.search.searchLoading && <Spinner my={8} />}
         {foodCtx.search.recipes.length &&
           !foodCtx.search.searchLoading &&
           foodSearchPage.map((el) => (

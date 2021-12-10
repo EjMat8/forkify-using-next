@@ -8,7 +8,8 @@ const defaultFood = {
   results: 0,
   page: 1,
   resPerPage: RES_PER_PAGE,
-  selectedRecipe: {},
+  selectedRecipe: null,
+  bookmarks: [],
 };
 
 const foodReducer = (state, action) => {
@@ -27,6 +28,15 @@ const foodReducer = (state, action) => {
         ...state,
         page: action.payload === "add" ? state.page + 1 : state.page - 1,
       };
+    case "BOOKMARK_TOGGLE_FOOD":
+      let bookmarks;
+      console.log("helo");
+      if (Array.isArray(action.payload))
+        bookmarks = [...action.payload, ...state.bookmarks];
+      else if (state.bookmarks.some((el) => el.id === action.payload.id))
+        bookmarks = state.bookmarks.filter((el) => el.id !== action.payload.id);
+      else bookmarks = [action.payload, ...state.bookmarks];
+      return { ...state, bookmarks };
     default:
       return state;
   }
@@ -46,6 +56,10 @@ const FoodProvider = ({ children }) => {
   const changePage = (change) =>
     dispatchFood({ type: "CHANGE_PAGE", payload: change });
 
+  const bookmarkFood = useCallback((bookmarked) => {
+    dispatchFood({ type: "BOOKMARK_TOGGLE_FOOD", payload: bookmarked });
+  }, []);
+
   const foodContext = {
     search: {
       recipes: foodState.recipes,
@@ -55,10 +69,12 @@ const FoodProvider = ({ children }) => {
       searchLoading,
     },
     selectedRecipe: foodState.selectedRecipe,
+    bookmarks: foodState.bookmarks,
     setSearchLoading,
     selectRecipe: selectFood,
     getRecipes: getFood,
     changePage,
+    setBookmarked: bookmarkFood,
   };
 
   return (

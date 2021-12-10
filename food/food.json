@@ -1,0 +1,26 @@
+[
+  {
+    "publisher": "Closet Cooking",
+    "image_url": "http://forkify-api.herokuapp.com/images/Pizza2BDip2B12B500c4c0a26c.jpg",
+    "title": "Pizza Dip",
+    "id": "5ed6604591c37cdc054bcac4"
+  },
+  {
+    "publisher": "Simply Recipes",
+    "image_url": "http://forkify-api.herokuapp.com/images/bananacookies300x200fd32417f.jpg",
+    "title": "Banana Cookies",
+    "id": "5ed6604591c37cdc054bcaf6"
+  },
+  {
+    "publisher": "The Pioneer Woman",
+    "image_url": "http://forkify-api.herokuapp.com/images/plate315ad0.jpg",
+    "title": "Salisbury Steak",
+    "id": "5ed6604591c37cdc054bcc53"
+  },
+  {
+    "publisher": "Jamie Oliver",
+    "image_url": "http://forkify-api.herokuapp.com/images/407_1_1350550087_lrg3fa4.jpg",
+    "title": "Pork belly roast",
+    "id": "5ed6604691c37cdc054bd042"
+  }
+]

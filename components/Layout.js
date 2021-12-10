@@ -1,7 +1,18 @@
 import { Box, Grid, GridItem as Gi } from "@chakra-ui/react";
+import { useEffect, useContext } from "react";
+import FoodContext from "../store/food-context";
 import FoodResultList from "./FoodResults/FoodResultList";
 import Topbar from "./Topbar/Topbar";
 export default function Layout({ children }) {
+  const { setBookmarked } = useContext(FoodContext);
+
+  useEffect(() => {
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+    if (!bookmarks) return;
+
+    setBookmarked(bookmarks);
+  }, [setBookmarked]);
+
   return (
     <Box
       minH="100vh"
@@ -18,8 +29,8 @@ export default function Layout({ children }) {
         maxW="114rem"
         borderRadius="xl"
         backgroundColor="violet"
-        overflow="hidden"
         boxShadow="xl"
+        overflow="hidden"
       >
         <Topbar />
         <Gi bg="white" color="brand.text" px={2} pos="relative">

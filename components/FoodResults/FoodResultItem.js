@@ -1,6 +1,7 @@
+import React from "react";
 import { HStack, Box, Text } from "@chakra-ui/react";
 import Link from "next/link";
-export default function FoodResultItem(props) {
+function FoodResultItem(props) {
   return (
     <Link href={`/${props.id}`} passHref>
       <HStack
@@ -34,3 +35,5 @@ export default function FoodResultItem(props) {
     </Link>
   );
 }
+
+export default React.memo(FoodResultItem);
