@@ -4,12 +4,11 @@ import { Heading } from "@chakra-ui/react";
 import Head from "next/head";
 import HomeList from "../components/HomeOptions/HomeList";
 export default function Home(props) {
-  console.log(props.food);
-
   return (
     <Fragment>
       <Head>
         <title>EJ&apos;s Forkify</title>
+        <link rel="icon" href="/favicon.png" />
         <meta name="description" content="Free yummy food recipes for you!" />
       </Head>
       <Heading

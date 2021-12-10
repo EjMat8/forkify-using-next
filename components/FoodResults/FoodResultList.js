@@ -32,10 +32,3 @@ export default function FoodResultList() {
     </Fragment>
   );
 }
-
-/**
-"publisher": "Closet Cooking",
-"image_url": "http://forkify-api.herokuapp.com/images/BBQChickenPizzawithCauliflowerCrust5004699695624ce.jpg",
-"title": "Cauliflower Pizza Crust (with BBQ Chicken Pizza)",
-"id": "5ed6604591c37cdc054bcd09"
-*/

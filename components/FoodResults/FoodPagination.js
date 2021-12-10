@@ -43,35 +43,3 @@ export default function FoodPagination() {
     </Box>
   );
 }
-
-// const markup = () => {
-//   if (curPage === totalPages && totalPages === 1) return null;
-//   if (curPage === 1 && totalPages > 1)
-//     return (
-//       <Fragment>
-//         <Spacer />
-//         <Button borderRadius="3xl" color="brand.200">
-//           Page {curPage + 1} &nbsp; <IoArrowForward />
-//         </Button>
-//       </Fragment>
-//     );
-//   if (curPage > 1 && curPage < totalPages)
-//     return (
-//       <Fragment>
-//         <Button borderRadius="3xl" color="brand.200">
-//           <IoArrowBack /> &nbsp; Page {curPage - 1}
-//         </Button>
-//         <Spacer />
-//         <Button borderRadius="3xl" color="brand.200">
-//           Page {curPage + 1} &nbsp; <IoArrowForward />
-//         </Button>
-//       </Fragment>
-//     );
-
-//   if (curPage === totalPages && totalPages > 1)
-//     return (
-//       <Button borderRadius="3xl" color="brand.200">
-//         <IoArrowBack /> &nbsp; Page {curPage - 1}
-//       </Button>
-//     );
-// };

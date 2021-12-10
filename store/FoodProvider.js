@@ -30,7 +30,7 @@ const foodReducer = (state, action) => {
       };
     case "BOOKMARK_TOGGLE_FOOD":
       let bookmarks;
-      console.log("helo");
+
       if (Array.isArray(action.payload))
         bookmarks = [...action.payload, ...state.bookmarks];
       else if (state.bookmarks.some((el) => el.id === action.payload.id))

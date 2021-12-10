@@ -2,7 +2,6 @@ import React from "react";
 import { VStack, Text, Button, Heading, Link, Icon } from "@chakra-ui/react";
 import { AiOutlineArrowRight } from "react-icons/ai";
 function FoodFooter(props) {
-  console.log("hi");
   return (
     <VStack py={16} px={16} spacing={6}>
       <Heading
