@@ -8,7 +8,7 @@ export default function Home(props) {
     <Fragment>
       <Head>
         <title>EJ&apos;s Forkify</title>
-        <link rel="icon" href="/favicon.png" />
+        
         <meta name="description" content="Free yummy food recipes for you!" />
       </Head>
       <Heading
