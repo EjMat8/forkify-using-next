@@ -1,6 +1,7 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import FoodProvider from "../store/FoodProvider";
 import Layout from "../components/Layout";
+import Head from "next/head";
 const theme = extendTheme({
   styles: {
     global: {
@@ -30,6 +31,12 @@ function MyApp({ Component, pageProps }) {
     <ChakraProvider theme={theme}>
       <FoodProvider>
         <Layout>
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+          </Head>
           <Component {...pageProps} />
         </Layout>
       </FoodProvider>

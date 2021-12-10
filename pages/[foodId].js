@@ -3,6 +3,7 @@ import FoodContext from "../store/food-context";
 import { getFoodData as fetchSelectedFood } from "../lib/food-api";
 import { catchAsync } from "../lib/helper";
 import { Box, Center } from "@chakra-ui/react";
+import Head from "next/head";
 
 import Spinner from "../components/UI/Spinner";
 import FoodHeader from "../components/FoodPage/FoodHeader";
@@ -44,34 +45,39 @@ function FoodPage() {
   }, [selectedRecipe]);
 
   return (
-    <Box minH="100%">
-      {isLoading && (
-        <Center>
-          <Spinner my={16} />
-        </Center>
-      )}
-      {!isLoading && selectedRecipe && (
-        <React.Fragment>
-          <FoodHeader
-            title={selectedRecipe.title}
-            imageUrl={selectedRecipe.image_url}
-          />
-          <FoodActions
-            selectedRecipe={selectedRecipe}
-            setNumServings={setNumServings}
-            numOfServings={numServings.num}
-          />
-          <FoodRecipe
-            ingredients={selectedRecipe.ingredients}
-            numServings={numServings}
-          />
-          <FoodFooter
-            url={selectedRecipe.source_url}
-            publisher={selectedRecipe.publisher}
-          />
-        </React.Fragment>
-      )}
-    </Box>
+    <React.Fragment>
+      <Head>
+        <title>Yum Food!</title>
+      </Head>
+      <Box minH="100%">
+        {isLoading && (
+          <Center>
+            <Spinner my={16} />
+          </Center>
+        )}
+        {!isLoading && selectedRecipe && (
+          <React.Fragment>
+            <FoodHeader
+              title={selectedRecipe.title}
+              imageUrl={selectedRecipe.image_url}
+            />
+            <FoodActions
+              selectedRecipe={selectedRecipe}
+              setNumServings={setNumServings}
+              numOfServings={numServings.num}
+            />
+            <FoodRecipe
+              ingredients={selectedRecipe.ingredients}
+              numServings={numServings}
+            />
+            <FoodFooter
+              url={selectedRecipe.source_url}
+              publisher={selectedRecipe.publisher}
+            />
+          </React.Fragment>
+        )}
+      </Box>
+    </React.Fragment>
   );
 }
 export default FoodPage;
